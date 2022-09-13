@@ -2,11 +2,20 @@ import numpy as np
 import random
 from sklearn import datasets
 from sklearn import datasets
-
-
 import matplotlib.pyplot as plt
+
+INPUT_LAYER = 4
+OUTPUT_LAYER = 3
+HIDDEN_LAYER = 10
+LEARNING_RATE = 0.001
+EPOCHS = 100
+
+
 iris = datasets.load_iris()
 dataset = [(iris.data[i][None, ...], iris.target[i]) for i in range(len(iris.target))]
+random.shuffle(dataset)
+test = dataset[::5]
+del dataset[::5]
 
 def relu(x):
     return np.maximum(0, x)
@@ -43,12 +52,6 @@ def calc_accuracy(test):
     acc = correct/len(test)
     return acc
 
-
-INPUT_LAYER = 4
-OUTPUT_LAYER = 3
-HIDDEN_LAYER = 10
-LEARNING_RATE = 0.001
-EPOCHS = 100
 
 loss_arr = []
 print('Do you want to teach network? 1/0')
@@ -115,8 +118,7 @@ else:
     
 
 #CREATE TESTS
-test = dataset[::5]
-del dataset[::5]
+
 
 acc = calc_accuracy(test)
 print("Accuracy.....", acc)
@@ -140,6 +142,17 @@ f = open('weights.txt', 'w')
 
 plt.plot(loss_arr)
 plt.show()
+
+
+
+
+
+
+
+
+
+
+
 
 
 
