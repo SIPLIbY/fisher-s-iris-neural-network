@@ -122,10 +122,11 @@ else:
 
 acc = calc_accuracy(test)
 print("Accuracy.....", acc)
-f = open('weights.txt', 'w')
+
 
 
 #to update and save weights
+#f = open('weights.txt', 'w')
 # f.write('W1: ')
 # f.write(str(weight_1))
 # f.write('\n')
